@@ -26,6 +26,12 @@ kotlin {
             baseName = "ComposeApp"
             isStatic = true
         }
+        iosTarget.compilations.getByName("main") {
+            val iosInterop by cinterops.creating {
+                defFile(project.file("src/iosMain/nativeInterop/cmp_demo.def"))
+                compilerOpts("-I${project.projectDir.absolutePath}/src/iosMain/nativeInterop")
+            }
+        }
     }
     
     sourceSets {

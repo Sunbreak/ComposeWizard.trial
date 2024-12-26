@@ -1,5 +1,10 @@
+@file:OptIn(ExperimentalForeignApi::class)
+
 package org.example.project
 
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.viewinterop.UIKitView
+import kotlinx.cinterop.ExperimentalForeignApi
 import platform.UIKit.UIDevice
 
 class IOSPlatform: Platform {
@@ -7,3 +12,10 @@ class IOSPlatform: Platform {
 }
 
 actual fun getPlatform(): Platform = IOSPlatform()
+
+@Composable
+actual fun NativeView() {
+    UIKitView(
+        factory = { CMPNativeView() }
+    )
+}

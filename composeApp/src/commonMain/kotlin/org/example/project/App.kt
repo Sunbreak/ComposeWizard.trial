@@ -32,6 +32,7 @@ fun App() {
                     Text("Compose: $greeting")
                 }
             }
+            NativeView()
         }
     }
 }
